@@ -1,0 +1,71 @@
+﻿@page
+@model StudentManagementApp.Pages.CreateModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Create Student</h1>
+</div>
+
+<div class="row">
+
+    @if (Model.errorMessage.Length>0)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>@Model.errorMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <form method="post">
+        <div class="row">
+            <div class="col-md-3">
+                <label>First Name :</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" name="firstname" class="form-control" value="@Model.stdInfo.firstname" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Last Name :</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" name="lastname" class="form-control" value="@Model.stdInfo.lastname"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Address :</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" name="address" class="form-control" value="@Model.stdInfo.address"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>City :</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" name="city" class="form-control" value="@Model.stdInfo.city"/>
+            </div>
+        </div>
+
+        @if (Model.successMessage.Length>0)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@Model.successMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-6">
+                <button style="width:auto" type="submit" class="btn btn-primary" width="100%">Submit</button>
+            </div>
+            <div class="col-md-6">
+                <a style="width:auto" class="btn btn-outline-primary" href="/" role="button" width="100%">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

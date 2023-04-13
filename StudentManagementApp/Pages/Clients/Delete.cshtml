@@ -1,0 +1,36 @@
+﻿@page
+
+@using System.Data.SqlClient;
+@{
+}
+
+@{
+    try
+    {
+        String id = Request.Query["id"];
+
+        String connectionString = "Data Source=DESKTOP-BV68OOS\\SQLEXPRESS;Initial Catalog=studentdb;Integrated Security=True";
+
+        using (SqlConnection con = new SqlConnection(connectionString))
+        {
+            con.Open();
+            String query = "DELETE FROM Student WHERE id=@id";
+
+            using(SqlCommand cmd = new SqlCommand(query,con))
+            {
+                cmd.Parameters.AddWithValue("@id", Int16.Parse(id));
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+    catch(Exception ex)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>ex</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    Response.Redirect("/Index");
+}

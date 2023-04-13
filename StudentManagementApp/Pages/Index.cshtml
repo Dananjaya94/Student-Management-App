@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Student Management System";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Student Management System</h1>
+</div>
+
+<a class="btn btn-outline-dark btn-sm" href="/Clients/Create">Add Student</a>
+<div class="row">
+    <div class="col-md-12">
+        <form>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var items in Model.studentInfo)
+                {
+                    <tr>
+                        <td>@items.Id</td>
+                        <td>@items.firstname</td>
+                        <td>@items.lastname</td>
+                        <td>@items.address</td>
+                        <td>@items.city</td>
+                        <td>
+                            <a class="btn btn-warning" href="/Clients/Edit?id=@items.Id">Edit</a>
+                            <a class="btn btn-danger" href="/Clients/Delete?id=@items.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+    </div>
+</div>
